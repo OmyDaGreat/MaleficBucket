@@ -26,7 +26,7 @@ jobs:
                   }
               },
               "bin": "kommit.bat",
-              "persist": "kommit.yml",
+              "persist": ".kommit.yaml",
               "checkver": "github",
               "autoupdate": {
                   "architecture": {
