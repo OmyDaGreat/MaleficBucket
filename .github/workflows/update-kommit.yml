@@ -1,8 +1,8 @@
-name: Update Profile Manifest
+name: Update Kommit Manifest
 
 on:
   repository_dispatch:
-    types: [update-profile]
+    types: [update-kommit]
 
 jobs:
   update:
