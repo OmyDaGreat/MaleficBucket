@@ -1,8 +1,8 @@
-name: Update App Manifest
+name: Update Profile Manifest
 
 on:
   repository_dispatch:
-    types: [update-app]
+    types: [update-profile]
 
 jobs:
   update:
