@@ -10,6 +10,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Set up Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+      - name: Get latest commit message from Kommit repo
+        id: get_commit_message
+        run: |
+          latest_commit_message=$(curl -s https://api.github.com/repos/OmyDaGreat/Kommit/commits/main | jq -r '.commit.message')
+          echo "COMMIT_MESSAGE=$latest_commit_message" >> $GITHUB_ENV
       - name: Update manifest
         run: |
           mkdir -p bucket
@@ -39,8 +48,6 @@ jobs:
           EOF
       - name: Commit and push
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
           git add bucket/kommit.json
-          git commit -m "Update kommit to version ${{ github.event.client_payload.version }}"
+          git commit -m "$COMMIT_MESSAGE"
           git push
