@@ -1,12 +1,12 @@
 {
-    "version": "1.0.11",
+    "version": "1.1.0",
     "description": "A Kotlin-based conventional commit message generator",
     "homepage": "https://github.com/OmyDaGreat/Kommit",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/OmyDaGreat/Kommit/releases/download/v1.0.11/kommit-1.0.11.zip",
-            "hash": "7ef7f837f7e07bdb6bc42d5906b1537699504ca171afe725f64458e615f5f3e6"
+            "url": "https://github.com/OmyDaGreat/Kommit/releases/download/v1.1.0/kommit-1.1.0.zip",
+            "hash": "d106dfdf3979b04b5ee1480643819bbc0f5bc86801508e850ad0ed70c066984b"
         }
     },
     "bin": "kommit.bat",
