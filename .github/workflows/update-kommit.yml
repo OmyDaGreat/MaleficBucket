@@ -1,12 +1,18 @@
-name: Update Kommit Manifest
+name: Update Profile Manifest
 
 on:
   repository_dispatch:
-    types: [update-kommit]
+    types: [update-profile]
 
 jobs:
   update:
     runs-on: ubuntu-latest
+
+    env:
+      APP_NAME: kommit
+      REPO_LOCATION: https://github.com/OmyDaGreat/Kommit
+      DESCRIPTION: A Kotlin-based conventional commit message generator
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -14,33 +20,34 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-      - name: Get latest commit message from Kommit repo
+      - name: Get latest commit message from Profile repo
         id: get_commit_message
         run: |
-          latest_commit_message=$(curl -s https://api.github.com/repos/OmyDaGreat/Kommit/commits/main | jq -r '.commit.message')
+          REPO_OWNER=$(echo ${{ env.REPO_LOCATION }} | awk -F '/' '{print $4}')
+          REPO_NAME=$(echo ${{ env.REPO_LOCATION }} | awk -F '/' '{print $5}')
+          latest_commit_message=$(curl -s https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/commits/main | jq -r '.[0].commit.message')
           echo "COMMIT_MESSAGE=$latest_commit_message" >> $GITHUB_ENV
       - name: Update manifest
         run: |
           mkdir -p bucket
-          cat > bucket/kommit.json << EOF
+          cat > bucket/${{ env.APP_NAME }}.json << EOF
           {
               "version": "${{ github.event.client_payload.version }}",
-              "description": "A Kotlin-based conventional commit message generator",
-              "homepage": "https://github.com/OmyDaGreat/Kommit",
+              "description": "${{ env.DESCRIPTION }}",
+              "homepage": "${{ env.REPO_LOCATION }}",
               "license": "MIT",
               "architecture": {
                   "64bit": {
-                      "url": "https://github.com/OmyDaGreat/Kommit/releases/download/${{ github.event.client_payload.tag }}/kommit-${{ github.event.client_payload.version }}.zip",
+                      "url": "${{ env.REPO_LOCATION }}/releases/download/${{ github.event.client_payload.tag }}/${{ env.APP_NAME }}-${{ github.event.client_payload.version }}.zip",
                       "hash": "${{ github.event.client_payload.sha256 }}"
                   }
               },
-              "bin": "kommit.bat",
-              "persist": ".kommit.yaml",
+              "bin": "${{ env.APP_NAME }}.bat",
               "checkver": "github",
               "autoupdate": {
                   "architecture": {
                       "64bit": {
-                          "url": "https://github.com/OmyDaGreat/Kommit/releases/download/v\$version/kommit-\$version.zip"
+                          "url": "${{ env.REPO_LOCATION }}/releases/download/v\$version/${{ env.APP_NAME }}-\$version.zip"
                       }
                   }
               }
@@ -48,6 +55,6 @@ jobs:
           EOF
       - name: Commit and push
         run: |
-          git add bucket/kommit.json
+          git add bucket/${{ env.APP_NAME }}.json
           git commit -m "$COMMIT_MESSAGE"
           git push
