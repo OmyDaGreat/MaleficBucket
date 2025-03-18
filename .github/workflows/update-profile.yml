@@ -56,5 +56,5 @@ jobs:
       - name: Commit and push
         run: |
           git add bucket/${{ env.APP_NAME }}.json
-          git commit -m "${{ github.event.client_payload.latest_commit_message }}"
+          git commit -m "${{ env.APP_NAME }}: ${{ github.event.client_payload.latest_commit_message }}"
           git push
