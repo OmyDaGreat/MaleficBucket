@@ -6,7 +6,7 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/OmyDaGreat/Kommit/releases/download/v2.0.10/kommit-2.0.10.zip",
-            "hash": "8789ece5aa49260590b5b38926eccd69cf4c8511bd910e4dd4d8a8c51fa926a9"
+            "hash": "35557af7493d551429fcc5a5f2fe81df426456a176fa074808ad4f33a1ab2b2e"
         }
     },
     "bin": "kommit.bat",
