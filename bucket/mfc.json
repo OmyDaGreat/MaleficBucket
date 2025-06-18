@@ -1,12 +1,12 @@
 {
-    "version": "0.1.8",
+    "version": "0.1.9",
     "description": "A multi-use general purpose terminal application!",
     "homepage": "https://github.com/OmyDaGreat/mfc",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/OmyDaGreat/mfc/releases/download/v0.1.8/mfc-0.1.8.zip",
-            "hash": "1eda5790b28650132a7beef4d8e0ed4e1e739af8dcf7d94bdf1dd0e017ffc242"
+            "url": "https://github.com/OmyDaGreat/mfc/releases/download/v0.1.9/mfc-0.1.9.zip",
+            "hash": "f1af18a9d8d15cc1a97983c2b4c3c19667831ecbef2fdbe209bfabfa85198348"
         }
     },
     "bin": "mfc.bat",
