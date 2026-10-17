@@ -11,7 +11,7 @@ jobs:
     env:
       APP_NAME: mfc
       REPO_LOCATION: https://github.com/OmyDaGreat/mfc
-      DESCRIPTION: A multi-use general purpose terminal application! 
+      DESCRIPTION: A multi-use general purpose terminal application!
 
     steps:
       - name: Checkout code
