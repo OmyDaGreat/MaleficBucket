@@ -1,12 +1,12 @@
 {
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "A terminal-based git profile switcher made with Kotlin",
     "homepage": "https://github.com/OmyDaGreat/Profile",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/OmyDaGreat/Profile/releases/download/v1.0.5/profile-1.0.5.zip",
-            "hash": "49b3fae89bf0b8176dd01b8638c6cf45630d3a4deb5f8d92afa4aa58398dfbe5"
+            "url": "https://github.com/OmyDaGreat/Profile/releases/download/v1.0.6/profile-1.0.6.zip",
+            "hash": "7cff92613d2137149611960464ba33b4826636413325067d789ee0ab6179901b"
         }
     },
     "bin": "profile.bat",
